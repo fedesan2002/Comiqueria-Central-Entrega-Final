@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta
+        name="description"
+        content="Explorá manga y cómics, armá tu carrito y completá una compra simulada en Comiquería Central."
+    >
+    <title>Comiquería Central | Manga y Cómics</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+
+    <div class="top-bar">
+        CATÁLOGO INTERACTIVO · MANGA Y CÓMICS
+    </div>
+
+    <header class="header">
+        <div class="header-container">
+
+            <a href="#inicio" class="logo">
+                COMIQUERÍA <span>CENTRAL</span>
+            </a>
+
+            <div class="search-box">
+                <input
+                    id="buscarInput"
+                    type="search"
+                    placeholder="Buscá un manga o cómic..."
+                    aria-label="Buscar productos por nombre"
+                    autocomplete="off"
+                >
+                <button id="buscarBtn" type="button">Buscar</button>
+            </div>
+
+            <button
+                id="abrirCarritoBtn"
+                class="cart-button"
+                type="button"
+            >
+                Carrito (<span id="cantidadCarrito">0</span>)
+            </button>
+
+        </div>
+    </header>
+
+    <nav class="nav" aria-label="Navegación principal">
+        <div class="nav-container">
+            <a href="#inicio">Inicio</a>
+            <a href="#catalogo">Catálogo</a>
+            <a href="#simulador">Agregar título</a>
+            <a href="#historial">Mis compras</a>
+            <button type="button" id="navCarritoBtn">Carrito</button>
+        </div>
+    </nav>
+
+    <main>
+
+        <section class="hero" id="inicio">
+            <div class="hero-overlay">
+                <div class="hero-content hero-poster">
+
+                    <span class="hero-tag">COMIQUERÍA CENTRAL</span>
+
+                    <h1>Tu próxima historia<br>empieza acá.</h1>
+
+                    <p>
+                        Manga y cómics seleccionados para explorar, sumar al
+                        carrito y conservar tus cambios entre visitas.
+                    </p>
+
+                    <a class="btn-primary hero-link" href="#catalogo">
+                        Ver catálogo
+                    </a>
+
+                </div>
+            </div>
+        </section>
+
+        <div
+            id="avisoDescuento"
+            class="status-message promotion-message"
+            role="status"
+            aria-live="polite"
+        ></div>
+
+        <div
+            id="mensajeEstado"
+            class="status-message"
+            role="status"
+            aria-live="polite"
+        ></div>
+
+        <section class="section" id="catalogo">
+
+            <div class="section-heading">
+                <div>
+                    <span class="section-kicker">NUESTRO CATÁLOGO</span>
+                    <h2>Productos</h2>
+                </div>
+
+                <span class="section-line"></span>
+            </div>
+
+            <div class="catalog-controls">
+                <label for="categoriaFiltro">Filtrar por categoría</label>
+                <select id="categoriaFiltro">
+                    <option value="Todos">Todos los productos</option>
+                    <option value="Manga">Manga</option>
+                    <option value="Cómic">Cómic</option>
+                </select>
+            </div>
+
+            <p
+                id="mensajeBusqueda"
+                class="search-message"
+                aria-live="polite"
+            ></p>
+
+            <div id="productosGrid" class="products-grid" aria-busy="true"></div>
+            <button id="reintentarCargaBtn" class="btn-primary retry-button" type="button" hidden>
+                Reintentar carga
+            </button>
+
+        </section>
+
+        <section class="simulator-section" id="simulador">
+
+            <div class="simulator-card admin-card">
+
+                <div class="admin-copy">
+                    <span class="section-kicker">GESTIONÁ EL CATÁLOGO</span>
+
+                    <h2>Agregá un nuevo título</h2>
+
+                    <p>
+                        Completá el formulario y el producto aparecerá al
+                        instante en el catálogo, sin recargar la página.
+                    </p>
+                </div>
+
+                <form id="formularioProducto" class="product-form" novalidate>
+                    <div class="form-field form-field-wide">
+                        <label for="nombreProducto">Nombre del título</label>
+                        <input
+                            id="nombreProducto"
+                            name="nombreProducto"
+                            type="text"
+                            placeholder="Ej.: Blue Lock"
+                            maxlength="50"
+                            required
+                        >
+                        <p class="cover-hint">
+                            Escribí el título y buscaremos su portada automáticamente.
+                            También hay portadas locales para usar sin conexión.
+                        </p>
+                    </div>
+
+                    <div
+                        id="vistaPreviaPortada"
+                        class="cover-detection form-field-wide"
+                        aria-live="polite"
+                        hidden
+                    >
+                        <img id="imagenPortadaDetectada" alt="">
+                        <p id="mensajePortada"></p>
+                    </div>
+
+                    <div class="form-field">
+                        <label for="precioProducto">Precio</label>
+                        <input
+                            id="precioProducto"
+                            name="precioProducto"
+                            type="number"
+                            placeholder="Ej.: 8500"
+                            min="1"
+                            max="100000000"
+                            step="1"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-field">
+                        <label for="categoriaProducto">Categoría</label>
+                        <select id="categoriaProducto" name="categoriaProducto">
+                            <option value="Manga">Manga</option>
+                            <option value="Cómic">Cómic</option>
+                        </select>
+                    </div>
+
+                    <div class="form-field">
+                        <label for="stockProducto">Stock inicial</label>
+                        <input
+                            id="stockProducto"
+                            name="stockProducto"
+                            type="number"
+                            placeholder="Ej.: 5"
+                            min="0"
+                            max="10000"
+                            step="1"
+                            required
+                        >
+                    </div>
+
+                    <button class="btn-primary form-submit" type="submit">
+                        Agregar al catálogo
+                    </button>
+
+                    <p
+                        id="mensajeFormulario"
+                        class="form-message form-field-wide"
+                        role="status"
+                        aria-live="polite"
+                    ></p>
+                </form>
+
+            </div>
+
+        </section>
+
+        <section class="section" id="historial">
+            <div class="section-heading">
+                <div>
+                    <span class="section-kicker">TUS COMPROBANTES</span>
+                    <h2>Mis compras (<span id="cantidadCompras">0</span>)</h2>
+                </div>
+                <span class="section-line"></span>
+            </div>
+            <p class="history-description">Las compras son simuladas. Tus comprobantes quedan guardados en este navegador.</p>
+            <div id="historialContenido" class="orders-grid" aria-live="polite"></div>
+            <div class="reset-data">
+                <div>
+                    <h3>Empezar de nuevo</h3>
+                    <p>Restaurá el catálogo inicial y borrá los datos guardados de esta simulación.</p>
+                </div>
+                <button id="reiniciarDatosBtn" class="btn-secondary" type="button">Reiniciar simulación</button>
+            </div>
+        </section>
+
+    </main>
+
+    <div
+        id="carritoOverlay"
+        class="cart-overlay"
+        aria-hidden="true"
+    ></div>
+
+    <aside
+        id="carritoPanel"
+        class="cart-panel"
+        aria-label="Carrito de compras"
+        aria-hidden="true"
+        aria-modal="false"
+        role="dialog"
+        inert
+    >
+
+        <div class="cart-header">
+            <div>
+                <span class="section-kicker">TU COMPRA</span>
+                <h2>Carrito</h2>
+            </div>
+
+            <button
+                id="cerrarCarritoBtn"
+                class="close-cart"
+                type="button"
+                aria-label="Cerrar carrito"
+            >
+                ×
+            </button>
+        </div>
+
+        <div id="carritoContenido" class="cart-content"></div>
+
+        <div class="cart-footer">
+
+            <div class="cart-summary-row">
+                <span>Subtotal</span>
+                <span id="subtotalCarrito">$0</span>
+            </div>
+            <div class="cart-summary-row cart-discount-row">
+                <span>Descuento</span>
+                <span id="descuentoCarrito">−$0</span>
+            </div>
+            <div class="cart-total-row">
+                <span>Total</span>
+                <strong id="totalCarrito">$0</strong>
+            </div>
+            <p class="cart-promotion">2 unidades: 5 % de descuento · 3 o más: 10 %</p>
+
+            <button
+                id="finalizarCompraBtn"
+                class="btn-primary cart-action"
+                type="button"
+            >
+                Revisar y confirmar
+            </button>
+
+            <button
+                id="vaciarCarritoBtn"
+                class="btn-secondary cart-action"
+                type="button"
+            >
+                Vaciar carrito
+            </button>
+
+        </div>
+
+    </aside>
+
+    <footer class="footer">
+        <p>Comiquería Central · Proyecto final de JavaScript · Compra simulada sin cobros</p>
+        <a href="docs/README.md">Documentación del proyecto</a>
+    </footer>
+
+    <script src="js/vendor/sweetalert2.all.min.js"></script>
+    <script src="js/catalogo.js"></script>
+    <script src="js/main.js"></script>
+
+</body>
+</html>
+
