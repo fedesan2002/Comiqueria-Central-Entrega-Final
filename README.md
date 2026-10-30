@@ -50,8 +50,3 @@ El HTML vincula **tres archivos `.js` en total**: dos de código propio y un arc
 
 Promoción: **2 unidades, 5 % de descuento; 3 o más, 10 %**. El stock se actualiza durante el uso del carrito. Los precios y stock son simulados. La búsqueda opcional de portadas usa servicios externos que pueden no estar disponibles.
 
-## Verificación para el evaluador
-
-Las comprobaciones técnicas documentadas del proyecto se describen en [docs/VERIFICACION.md](docs/VERIFICACION.md). Para evaluar el proyecto, se recomienda ejecutar la siguiente prueba manual en el navegador.
-
-**Prueba rápida:** ejecutar con Live Server → añadir dos unidades → comprobar 5 % → añadir una tercera → comprobar 10 % → confirmar compra → ver historial → recargar → verificar persistencia → reiniciar simulación.
