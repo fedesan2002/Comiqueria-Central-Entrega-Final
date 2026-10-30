@@ -1,6 +1,6 @@
 # Comiquería Central — Entrega final de JavaScript
 
-**Comiquería Central** es un simulador académico de compra de manga y cómics. Permite consultar el catálogo, buscar y filtrar títulos, crear y eliminar productos, gestionar el carrito, calcular descuentos, confirmar una compra simulada y conservar un historial de comprobantes. **No hay registro de usuarios ni pagos reales.**
+**Comiquería Central** es un simulador académico de compra de manga y cómics. Permite consultar el catálogo, buscar y filtrar títulos, crear y eliminar productos, gestionar el carrito, calcular descuentos, confirmar una compra simulada y conservar un historial de comprobantes.
 
 ## 1. Cómo ejecutar el proyecto
 
