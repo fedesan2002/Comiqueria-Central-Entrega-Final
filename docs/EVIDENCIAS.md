@@ -2,7 +2,6 @@
 
 **Repositorio:** https://github.com/fedesan2002/Comiqueria-Central-Entrega-Final
 
-Esta guía permite al docente verificar cada requisito y repetir el flujo de la aplicación. **Los resultados siguientes son resultados esperados según el código; no son capturas ni una certificación de ejecución en navegador.** Para la entrega final, realizar las pruebas manuales y, si se necesita prueba visual, guardar capturas reales.
 
 ## 1. Matriz de rúbrica y ubicación del código
 
