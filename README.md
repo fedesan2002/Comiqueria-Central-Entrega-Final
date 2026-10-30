@@ -78,4 +78,4 @@ Los arrays de productos definidos en JavaScript empiezan vacíos y se completan 
 
 **Prueba rápida para el evaluador:** iniciar con Live Server → agregar 2 unidades → comprobar 5 % → agregar una tercera → comprobar 10 % → confirmar en SweetAlert2 → consultar **Mis compras** → recargar → verificar persistencia → usar **Reiniciar simulación**.
 
-> Este es un ejercicio académico: no se procesan transacciones reales.
+
